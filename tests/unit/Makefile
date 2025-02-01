@@ -32,7 +32,7 @@ CC = gcc
 CFLAGS = -Werror -fPIC -I$(SRC_DIR) --debug
 
 LD = gcc
-LDFLAGS = -Wl,--no-as-needed -lpcre2-8 -lutf8proc -lutf8lex -L$(HASHTABLE_LIBRARY_DIR) -Wl,-rpath,$(HASHTABLE_LIBRARY_DIR) -lhashtable
+LDFLAGS = -Wl,--no-as-needed -L$(HASHTABLE_LIBRARY_DIR) -Wl,-rpath,$(HASHTABLE_LIBRARY_DIR) -lhashtable
 
 TEST_BUILD_DIR ?= ../build
 

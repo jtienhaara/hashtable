@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <utf8lex.h>  // For utf8lex_* functions.
 
 #include "hashtable.h"
 
@@ -61,22 +60,6 @@ int main(int argc, char *argv[])
     fprintf(stderr,
             "ERROR test_hashtable: Failed with error code: %d\n",
             (int) error);
-    // !!! char error_bytes[256];
-    // !!! utf8lex_string_t error_string;
-    // !!! utf8lex_string_init(&error_string,
-    // !!!                     256,  // max_length_bytes
-    // !!!                     0,  // length_bytes
-    // !!!                     &error_bytes[0]);
-    // !!! hashtable_error_string(&error_string,
-    // !!!                        error);
-    // !!! 
-    // !!!  fprintf(stderr,
-    // !!!         "ERROR test_hashtable: Failed with error code: %d %s\n",
-    // !!!         (int) error,
-    // !!!         error_string.bytes);
-    // !!! 
-    // !!!  fflush(stdout);
-    // !!! fflush(stderr);
     return (int) error;
   }
 }

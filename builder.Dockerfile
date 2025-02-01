@@ -44,46 +44,32 @@ ENV TZ=UTC/UTC
 #
 #     ca-certificates
 #         Latest certificate authorities.
+#     dpkg-dev
+#         Debian package building.
 #     gcc
 #         C compiler.
 #     gdb
 #         C debugger.
-#     libpcre2-dev
-#         UTF-8 character regular expressions.
-#     libutf8proc-dev
-#         UTF-8 character reading and categorizing.
-#     libutf8proc2
-#         UTF-8 character reading and categorizing.
+#     libc6-dev
+#         C libraries and stdio.h.
 #     locales [required] [dynamic]
 #         Required both for building C code, and for runtime reading
 #         and writing of UTF-8-encoded characters.
 #     make
 #         Traditional make.  Required for building things from Makefiles.
-#     utf8lex
-#         UTF-8 string lexical analysis and reading.
 #
 RUN apt-get update --yes \
     && apt-get install --no-install-recommends --yes \
        ca-certificates \
+       dpkg-dev \
        gcc \
        gdb \
-       libpcre2-dev \
-       libutf8proc-dev \
-       libutf8proc2 \
+       libc6-dev \
        locales \
        make \
     && apt-get clean
 
 ENV LC_CTYPE=C.utf8
-
-#
-# TODO TEMPORARY create proper packages from utf8lex repo instead of these
-# TODO manually downloaded binaries.
-#
-COPY ./include/utf8lex.h /usr/include/
-COPY ./lib/libutf8lex.so.1.0.0.linux.${TARGETARCH} /usr/lib/libutf8lex.so.1.0.0
-RUN ln -s /usr/lib/libutf8lex.so.1.0.0 /usr/lib/libutf8lex.so.1 \
-    && ln -s /usr/lib/libutf8lex.so.1.0.0 /usr/lib/libutf8lex.so
 
 #
 # User hashtable
